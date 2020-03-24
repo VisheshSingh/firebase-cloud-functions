@@ -13,10 +13,3 @@ newRequest.addEventListener('click', e => {
     newRequest.classList.remove('open');
   }
 });
-
-// CALL sayHello callable function
-const button = document.querySelector('.call');
-button.addEventListener('click', () => {
-  const sayHello = firebase.functions().httpsCallable('sayHello');
-  sayHello({ name: 'Shaun' }).then(result => console.log(result.data));
-});

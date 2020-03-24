@@ -1,12 +1,11 @@
 const functions = require('firebase-functions');
 
-// HTTP REQUESTS
-exports.toTheDojo = functions.https.onRequest((req, res) => {
-  res.redirect('https://www.thenetninja.co.uk');
+// AUTH TRIGGER - NEW USER SIGN UP
+exports.newUserSignup = functions.auth.user().onCreate(user => {
+  console.log('New user signed up: ', user.email, user.uid);
 });
 
-// CALLABLE
-exports.sayHello = functions.https.onCall((data, context) => {
-  const name = data.name;
-  return `hello ${name}!`;
+// AUTH TRIGGER - USER DELETED
+exports.userDeleted = functions.auth.user().onDelete(user => {
+  console.log('User deleted', user.email, user.uid);
 });
