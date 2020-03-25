@@ -55,19 +55,20 @@
       </nav>
     </header>
 
-    <section class="content">
+    <section class="content" id="app">
       <h1>Tutorial Requests</h1>
-      <ul class="request-list">
+      <ul class="request-list" v-for="request in requests">
         <li>
-          <span class="text">Laravel 6 tutorial</span>
+          <span class="text">{{request.text}}</span>
           <div>
-            <span class="votes">125</span>
+            <span class="votes">{{request.upvotes}}</span>
             <i class="material-icons upvote">arrow_upward</i>
           </div>
         </li>
       </ul>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/7.12.0/firebase-app.js"></script>
 
