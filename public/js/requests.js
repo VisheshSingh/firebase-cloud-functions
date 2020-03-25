@@ -7,7 +7,9 @@ var app = new Vue({
     upvoteRequest(id) {
       const upvote = firebase.functions().httpsCallable('upvote');
 
-      upvote({ id }).catch(err => console.log(err.message));
+      upvote({ id }).catch(err => {
+        showNotification(err.message);
+      });
     }
   },
   mounted() {
@@ -26,3 +28,14 @@ var app = new Vue({
     });
   }
 });
+
+const notification = document.querySelector('.notification');
+
+const showNotification = mesg => {
+  notification.textContent = mesg;
+  notification.classList.add('active');
+  setTimeout(() => {
+    notification.classList.remove('active');
+    notification.textContent = '';
+  }, 4000);
+};
