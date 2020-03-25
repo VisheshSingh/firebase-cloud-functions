@@ -44,7 +44,8 @@ exports.addRequest = functions.https.onCall((data, context) => {
   return admin
     .firestore()
     .collection('requests')
-    .add({
+    .doc()
+    .set({
       text: data.text,
       upvotes: 0
     });
