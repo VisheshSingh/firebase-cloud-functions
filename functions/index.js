@@ -62,7 +62,7 @@ exports.upvote = functions.https.onCall((data, context) => {
   const user = admin
     .firestore()
     .collection('users')
-    .doc(context.auth.id);
+    .doc(context.auth.uid);
   const request = admin
     .firestore()
     .collection('requests')
