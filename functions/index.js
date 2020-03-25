@@ -33,7 +33,7 @@ exports.addRequest = functions.https.onCall((data, context) => {
       'only authenticated users can add new requests'
     );
   }
-
+  console.log('data', data);
   if (data.text.length > 30) {
     throw new functions.https.HttpsError(
       'invalid-argument',
